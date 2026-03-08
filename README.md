@@ -10,6 +10,7 @@ The application shows basic example of networking using socket communication, th
 **Project Structure**
 
 chat-app/
+
 │
 ├── server.py
 
