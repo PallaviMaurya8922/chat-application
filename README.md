@@ -12,6 +12,7 @@ The application shows basic example of networking using socket communication, th
 chat-app/
 
 │
+
 ├── server.py
 
 ├── client.py
@@ -89,5 +90,7 @@ Empty message handling
 Server stability during multiple interactions
 
 Name: Pallavi Maurya
+
 Course: Computer Networks
+
 Assignment: Simple Chat Application
