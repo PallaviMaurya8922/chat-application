@@ -1,4 +1,5 @@
 Simple Chat Application
+
 **Overview**
 
 This is a simple multi-client chat application using TCP socket programming in Python.
@@ -11,8 +12,11 @@ The application shows basic example of networking using socket communication, th
 chat-app/
 │
 ├── server.py
+
 ├── client.py
+
 ├── README.md
+
 └── Report.pdf
 
 **Requirements**
