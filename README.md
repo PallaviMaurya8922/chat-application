@@ -11,14 +11,17 @@ The application demonstrates basic networking concepts such as socket communicat
 
 ## Project Structure
 
-
 chat-app/
-│
-├── server.py
-├── client.py
-├── README.md
-└── Report.pdf
 
+│
+
+├── server.py
+
+├── client.py
+
+├── README.md
+
+└── Report.pdf
 
 ---
 
