@@ -7,25 +7,25 @@ client.connect(("127.0.0.1", 12345))
 
 username = input("Enter username: ")
 
-# send JOIN message
 client.send(("JOIN " + username).encode())
 
 def send_message():
     while True:
-        message = input()
+        message = input("Type a message: ")
 
         if message == "/quit":
             client.send("QUIT".encode())
+            client.close()
+            print("You left the chat")
             break
 
         client.send(("MSG " + message).encode())
-
 
 def receive_message():
     while True:
         try:
             message = client.recv(1024).decode()
-            print(message)
+            print("\n" + message)
         except:
             break
 

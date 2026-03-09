@@ -1,22 +1,20 @@
 import socket
 import threading
 
-# Create socket
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# Bind to localhost and port
 server.bind(("127.0.0.1", 12345))
 
-# Start listening
 server.listen(10)
 print("Server is listening...")
 
 clients = []
 usernames = {}
 
-def broadcast(message):
+def broadcast(message, client_socket):
     for client in clients:
-        client.send(message.encode())
+        if client != client_socket:
+            client.send(message.encode())
 
 def receive_message(client_socket):
     username = usernames[client_socket]
@@ -34,14 +32,13 @@ def receive_message(client_socket):
                     text = ""
                 broadcast_message = username + ": " + text
                 print(broadcast_message)
-                broadcast(broadcast_message)
+                broadcast(broadcast_message, client_socket)
             elif command == "QUIT":
+                broadcast(username +" left the chat", client_socket)
                 break
         except:
             break
 
-    print(username + " left the chat")
-    broadcast(username + " left the chat")
     clients.remove(client_socket)
     del usernames[client_socket]
     client_socket.close()
@@ -59,7 +56,7 @@ def accept_clients():
         clients.append(client_socket)
         usernames[client_socket] = username
         print(username + " joined the chat")
-        broadcast(username + " joined the chat")
+        broadcast(username + " joined the chat", client_socket)
         thread = threading.Thread(target=receive_message, args=(client_socket,))
         thread.start()
 
